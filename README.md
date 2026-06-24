@@ -155,7 +155,5 @@ Through this project I learned:
 - User Profiles
 - AI Image History
 
----
 
-If you found this project useful, consider giving it a ⭐ on GitHub.
 
