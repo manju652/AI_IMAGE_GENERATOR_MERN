@@ -24,15 +24,17 @@ export const getAllPosts = async (req, res, next) => {
 };
 
 export const createPost = async (req, res, next) => {
+  console.log("NEW VERSION DEPLOYED");
+
   try {
     const { name, prompt, photo } = req.body;
+
     console.log("PHOTO =", photo);
-    const photoUrl = await cloudinary.uploader.upload(photo);
 
     const newPost = await Post.create({
       name,
       prompt,
-      photo: photoUrl.secure_url,
+      photo,
     });
 
     return res.status(200).json({
@@ -41,12 +43,5 @@ export const createPost = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
-
-    return next(
-      createError(
-        error.status || 500,
-        error?.response?.data?.error?.message || error.message
-      )
-    );
   }
 };
